@@ -4,51 +4,81 @@ import { motion } from "framer-motion"
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-[#f8f7ff] overflow-hidden">
-      {/* Glow blobs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-violet-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/15 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+    <section className="relative min-h-screen flex items-center bg-[#08070f] overflow-hidden">
+      {/* Glow blobs — Traxy palette */}
+      <div
+        className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/4"
+        style={{ background: "radial-gradient(circle, rgba(106,145,255,0.18) 0%, transparent 70%)", filter: "blur(60px)" }}
+      />
+      <div
+        className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none translate-y-1/3 -translate-x-1/4"
+        style={{ background: "radial-gradient(circle, rgba(124,58,237,0.20) 0%, transparent 70%)", filter: "blur(60px)" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(255,167,179,0.06) 0%, transparent 70%)", filter: "blur(80px)" }}
+      />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center w-full">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block bg-violet-100 text-violet-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-8 border border-violet-200">
+          <span
+            className="inline-block text-sm font-semibold px-4 py-1.5 rounded-full mb-8 border"
+            style={{
+              background: "rgba(106,145,255,0.1)",
+              borderColor: "rgba(106,145,255,0.25)",
+              color: "#a5b4fc",
+            }}
+          >
             48-Hour Launch Guarantee
           </span>
 
-          <h1 className="text-[clamp(2.4rem,5.5vw,4.5rem)] font-extrabold text-[#0f0a1e] leading-[1.1] tracking-tight mb-6">
+          <h1 className="text-[clamp(2.6rem,5.8vw,4.8rem)] font-extrabold leading-[1.08] tracking-tight mb-6 text-white">
             Your Business Online in{" "}
-            <span className="bg-gradient-to-r from-violet-600 to-cyan-600 bg-clip-text text-transparent">
+            <span
+              style={{
+                background: "linear-gradient(135deg, #6A91FF 0%, #a78bfa 45%, #FFA7B3 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
               48 Hours.
             </span>
             <br />
-            Your Brand Everywhere Forever.
+            Your Brand Everywhere{" "}
+            <span className="text-white/90">Forever.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style={{ color: "rgba(255,255,255,0.58)" }}>
             We build high-performance websites for lawyers, insurance agents, chiropractors, and dentists —
             then keep you visible on Google, ChatGPT, and everywhere clients search.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-14"
         >
           <a
             href="#contact"
-            className="bg-violet-700 text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-violet-800 transition-colors shadow-lg shadow-violet-200/60"
+            className="px-8 py-4 rounded-xl font-semibold text-base text-white transition-all hover:opacity-90 hover:scale-[1.02]"
+            style={{
+              background: "linear-gradient(135deg, #6A91FF 0%, #7C3AED 100%)",
+              boxShadow: "0 8px 32px rgba(106, 145, 255, 0.3)",
+            }}
           >
             Start 48-Hour Build
           </a>
           <a
             href="#services"
-            className="border-2 border-violet-300 text-violet-700 px-8 py-4 rounded-xl font-semibold text-base hover:bg-violet-50 transition-colors"
+            className="px-8 py-4 rounded-xl font-semibold text-base text-white/80 hover:text-white border transition-colors"
+            style={{ borderColor: "rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.04)" }}
           >
             See How It Works
           </a>
@@ -57,13 +87,18 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-wrap gap-3 justify-center"
         >
           {["Lawyers", "Insurance Agents", "Chiropractors", "Dentists"].map((niche) => (
             <span
               key={niche}
-              className="bg-white border border-violet-100 text-gray-600 text-sm px-5 py-2 rounded-full shadow-sm font-medium"
+              className="text-sm px-5 py-2 rounded-full font-medium border"
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                borderColor: "rgba(255,255,255,0.10)",
+                color: "rgba(255,255,255,0.65)",
+              }}
             >
               {niche}
             </span>

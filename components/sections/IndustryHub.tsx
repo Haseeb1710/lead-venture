@@ -31,11 +31,11 @@ const NICHES = [
 
 export default function IndustryHub() {
   return (
-    <section id="industry" className="py-24 bg-white">
+    <section id="industry" className="py-24 bg-[#08070f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#0f0a1e] mb-4">Built for Your Profession</h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+          <h2 className="text-4xl font-bold text-white mb-4">Built for Your Profession</h2>
+          <p className="text-lg max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
             We specialize in four high-revenue professions — and we know exactly what it takes to grow each one.
           </p>
         </div>
@@ -48,15 +48,30 @@ export default function IndustryHub() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(124,58,237,0.1)" }}
-              className="bg-[#faf5ff] rounded-2xl p-8 border border-violet-100 cursor-default"
+              whileHover={{ y: -4 }}
+              className="rounded-2xl p-8 cursor-default transition-all"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.07)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(106,145,255,0.25)"
+                ;(e.currentTarget as HTMLDivElement).style.boxShadow = "0 20px 60px rgba(106,145,255,0.08)"
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(255,255,255,0.07)"
+                ;(e.currentTarget as HTMLDivElement).style.boxShadow = "none"
+              }}
             >
               <div className="text-4xl mb-4">{niche.icon}</div>
-              <div className="text-xs text-violet-600 font-semibold uppercase tracking-widest mb-2">
+              <div
+                className="text-xs font-semibold uppercase tracking-widest mb-2"
+                style={{ color: "#a5b4fc" }}
+              >
                 {niche.profession}
               </div>
-              <h3 className="text-xl font-bold text-[#0f0a1e] mb-3">{niche.headline}</h3>
-              <p className="text-gray-600 leading-relaxed">{niche.copy}</p>
+              <h3 className="text-xl font-bold text-white mb-3">{niche.headline}</h3>
+              <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: "1.7" }}>{niche.copy}</p>
             </motion.div>
           ))}
         </div>

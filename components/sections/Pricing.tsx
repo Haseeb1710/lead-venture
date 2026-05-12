@@ -46,13 +46,13 @@ const PLANS = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-[#f8f7ff]">
+    <section id="pricing" className="py-24 bg-[#08070f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#0f0a1e] mb-4">
+          <h2 className="text-4xl font-bold text-white mb-4">
             Transparent Pricing. Extraordinary Results.
           </h2>
-          <p className="text-lg text-gray-500">
+          <p className="text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
             No long-term contracts. No hidden fees. Cancel anytime.
           </p>
         </div>
@@ -66,54 +66,67 @@ export default function Pricing() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={plan.highlight ? { scale: 1.02 } : { y: -4 }}
-              className={`rounded-2xl border p-8 relative ${
+              className="rounded-2xl p-8 relative"
+              style={
                 plan.highlight
-                  ? "bg-violet-700 border-violet-700 text-white shadow-2xl shadow-violet-200 md:-mt-6 md:-mb-6"
-                  : "bg-white border-gray-100 shadow-sm"
-              }`}
+                  ? {
+                      background: "linear-gradient(145deg, rgba(106,145,255,0.18) 0%, rgba(124,58,237,0.22) 50%, rgba(255,167,179,0.12) 100%)",
+                      border: "1px solid rgba(106,145,255,0.35)",
+                      boxShadow: "0 30px 80px rgba(106,145,255,0.15)",
+                    }
+                  : {
+                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.07)",
+                    }
+              }
             >
               {plan.badge && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
+                <span
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap"
+                  style={{ background: "linear-gradient(135deg, #6A91FF, #7C3AED)" }}
+                >
                   {plan.badge}
                 </span>
               )}
 
-              <h3 className={`text-xl font-bold mb-2 ${plan.highlight ? "text-white" : "text-[#0f0a1e]"}`}>
-                {plan.name}
-              </h3>
+              <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
               <div className="flex items-end gap-1 mb-6">
-                <span className={`text-5xl font-extrabold ${plan.highlight ? "text-white" : "text-[#0f0a1e]"}`}>
-                  ${plan.price}
-                </span>
-                <span className={`text-sm mb-2 ${plan.highlight ? "text-violet-200" : "text-gray-400"}`}>
-                  /mo
-                </span>
+                <span className="text-5xl font-extrabold text-white">${plan.price}</span>
+                <span className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.4)" }}>/mo</span>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm">
                     <span
-                      className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 font-bold ${
+                      className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 font-bold text-white"
+                      style={
                         plan.highlight
-                          ? "bg-white/20 text-white"
-                          : "bg-violet-100 text-violet-700"
-                      }`}
+                          ? { background: "linear-gradient(135deg, #6A91FF, #7C3AED)" }
+                          : { background: "rgba(106,145,255,0.15)", color: "#a5b4fc" }
+                      }
                     >
                       ✓
                     </span>
-                    <span className={plan.highlight ? "text-violet-100" : "text-gray-600"}>{f}</span>
+                    <span style={{ color: "rgba(255,255,255,0.7)" }}>{f}</span>
                   </li>
                 ))}
               </ul>
 
               <a
                 href="#contact"
-                className={`block text-center py-3.5 rounded-xl font-semibold transition-colors text-sm ${
+                className="block text-center py-3.5 rounded-xl font-semibold transition-all text-sm text-white hover:opacity-90"
+                style={
                   plan.highlight
-                    ? "bg-white text-violet-700 hover:bg-violet-50"
-                    : "bg-violet-700 text-white hover:bg-violet-800"
-                }`}
+                    ? {
+                        background: "linear-gradient(135deg, #6A91FF 0%, #7C3AED 100%)",
+                        boxShadow: "0 6px 24px rgba(106,145,255,0.3)",
+                      }
+                    : {
+                        background: "rgba(255,255,255,0.07)",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                      }
+                }
               >
                 Start 48-Hour Build
               </a>

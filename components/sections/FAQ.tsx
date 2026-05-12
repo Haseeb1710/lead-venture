@@ -48,7 +48,7 @@ const FAQ_SCHEMA = {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 bg-white">
+    <section id="faq" className="py-24 bg-[#0f0e1a]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
@@ -56,8 +56,10 @@ export default function FAQ() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#0f0a1e] mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-gray-500">Everything you need to know before you start</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+          <p className="text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
+            Everything you need to know before you start
+          </p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-3">
@@ -65,12 +67,18 @@ export default function FAQ() {
             <AccordionItem
               key={i}
               value={`item-${i}`}
-              className="border border-gray-100 rounded-xl px-6 data-[state=open]:border-violet-200 data-[state=open]:bg-violet-50 transition-colors"
+              className="rounded-xl px-6 transition-colors"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.07)",
+              }}
             >
-              <AccordionTrigger className="text-left font-semibold text-[#0f0a1e] hover:no-underline py-5 hover:text-violet-700 transition-colors">
+              <AccordionTrigger
+                className="text-left font-semibold text-white hover:no-underline py-5 hover:text-[#a5b4fc] transition-colors"
+              >
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 leading-relaxed pb-5">
+              <AccordionContent className="leading-relaxed pb-5" style={{ color: "rgba(255,255,255,0.58)" }}>
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
