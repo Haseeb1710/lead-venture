@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
@@ -12,38 +11,34 @@ const NICHES = [
     headline: "Turn Searches Into Retained Clients",
     copy:
       "Every day your site doesn't rank is a case your competitor wins. We get you found when prospects search 'attorney near me' on Google and ChatGPT.",
-    image:
-      "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "A judge's gavel and law books on a desk.",
+    image: "/industry/lawyers.gif",
+    imageAlt: "Animated scene representing lawyers and legal practice.",
   },
   {
     profession: "Insurance Agents",
     headline: "Be the Agent Clients Find First",
     copy:
       "Insurance is a trust game. We make sure your name appears first — on search engines, AI assistants, and local maps — before clients call anyone else.",
-    image:
-      "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80",
+    image: "/industry/insurance-agents.gif",
     imageAlt:
-      "A family walking together in a park at sunset.",
+      "Animated scene representing insurance agents protecting clients.",
   },
   {
     profession: "Chiropractors",
     headline: "Fill Your Schedule Every Week",
     copy:
       "New patients search for pain relief right now. We put your practice in front of them on Google, Yelp, and AI search before they book somewhere else.",
-    image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
+    image: "/industry/chiropractors.gif",
     imageAlt:
-      "A chiropractor performing a back adjustment on a patient.",
+      "Animated scene representing chiropractic care.",
   },
   {
     profession: "Dentists",
     headline: "Keep Your Chair Full Year-Round",
     copy:
       "Cosmetic and emergency dental patients decide fast. We make sure your practice is the first result they see — and the easiest to book.",
-    image:
-      "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "A dentist examining a patient in a modern clinic.",
+    image: "/industry/dentists.gif",
+    imageAlt: "Animated scene representing modern dental care.",
   },
 ] as const
 
@@ -91,15 +86,14 @@ export default function IndustryHub() {
                 }}
               />
 
-              {/* Photo header */}
+              {/* GIF header — native img for reliable animation playback */}
               <div className="relative h-64 sm:h-72 overflow-hidden">
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={niche.image}
                   alt={niche.imageAlt}
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  priority={i < 2}
+                  loading={i < 2 ? "eager" : "lazy"}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
 
                 {/* Dark bottom-fade for the "read more" link legibility */}
