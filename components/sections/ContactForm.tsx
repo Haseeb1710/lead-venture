@@ -6,11 +6,8 @@ import { submitContact } from "@/lib/actions"
 
 const BUSINESS_TYPES = ["Lawyer", "Insurance Agent", "Chiropractor", "Dentist", "Other"]
 
-const inputClass = [
-  "w-full rounded-lg px-4 py-2.5 text-sm text-white bg-white/[0.06] border border-white/10",
-  "focus:outline-none focus:ring-2 focus:ring-[#6A91FF]/40 focus:border-[#6A91FF]/40 transition-all",
-  "placeholder:text-white/30",
-].join(" ")
+const inputClass =
+  "w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#64CEFB]/40 focus:border-[#64CEFB]/60 transition-all lv-input"
 
 export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false)
@@ -34,11 +31,11 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-[#08070f]">
+    <section id="contact" className="py-24">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">Start Your 48-Hour Build</h2>
-          <p className="text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <h2 className="text-4xl font-bold text-[#0f0a1e] dark:text-white mb-4">Start Your 48-Hour Build</h2>
+          <p className="text-lg text-gray-600 dark:text-white/60">
             Fill in your details and we'll be in touch within 1 hour.
           </p>
         </div>
@@ -51,21 +48,26 @@ export default function ContactForm() {
               animate={{ opacity: 1, scale: 1 }}
               className="rounded-2xl p-12 text-center"
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(106,145,255,0.2)",
-              }}
+                background:
+                  "linear-gradient(135deg, var(--lv-tile-from) 0%, var(--lv-tile-mid) 50%, var(--lv-tile-to) 100%)",
+                border: "1px solid var(--lv-tile-border)",
+                boxShadow:
+                  "var(--lv-tile-shadow), inset 0 1px 0 var(--lv-tile-inset)",
+          backdropFilter: "blur(24px) saturate(100%)",
+          WebkitBackdropFilter: "blur(24px) saturate(100%)",
+                        }}
             >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 12 }}
                 className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl"
-                style={{ background: "rgba(106,145,255,0.15)" }}
+                style={{ background: "rgba(100,206,251,0.14)", color: "#64CEFB" }}
               >
                 ✓
               </motion.div>
-              <h3 className="text-2xl font-bold text-white mb-3">You&apos;re on the list!</h3>
-              <p style={{ color: "rgba(255,255,255,0.55)" }}>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: "var(--lv-text-tile-primary)" }}>You&apos;re on the list!</h3>
+              <p style={{ color: "var(--lv-text-tile-muted)" }}>
                 We'll reach out within 1 hour to confirm your 48-hour build slot.
               </p>
             </motion.div>
@@ -76,14 +78,20 @@ export default function ContactForm() {
               noValidate
               className="rounded-2xl p-8 space-y-5"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.08)",
-              }}
+                background:
+                  "linear-gradient(135deg, var(--lv-tile-from) 0%, var(--lv-tile-mid) 50%, var(--lv-tile-to) 100%)",
+                border: "1px solid var(--lv-tile-border)",
+                boxShadow:
+                  "var(--lv-tile-shadow), inset 0 1px 0 var(--lv-tile-inset)",
+          backdropFilter: "blur(24px) saturate(100%)",
+          WebkitBackdropFilter: "blur(24px) saturate(100%)",
+                        }}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm font-semibold mb-1.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-                    Full Name <span style={{ color: "#a5b4fc" }}>*</span>
+                  <label className="block text-sm font-semibold mb-1.5"
+                  style={{ color: "var(--lv-text-tile-secondary)" }}>
+                    Full Name <span style={{ color: "#64CEFB" }}>*</span>
                   </label>
                   <input
                     name="name"
@@ -94,8 +102,9 @@ export default function ContactForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-                    Email <span style={{ color: "#a5b4fc" }}>*</span>
+                  <label className="block text-sm font-semibold mb-1.5"
+                  style={{ color: "var(--lv-text-tile-secondary)" }}>
+                    Email <span style={{ color: "#64CEFB" }}>*</span>
                   </label>
                   <input
                     name="email"
@@ -109,9 +118,8 @@ export default function ContactForm() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm font-semibold mb-1.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-                    Phone
-                  </label>
+                  <label className="block text-sm font-semibold mb-1.5"
+                  style={{ color: "var(--lv-text-tile-secondary)" }}>Phone</label>
                   <input
                     name="phone"
                     type="tel"
@@ -120,32 +128,27 @@ export default function ContactForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-                    Business Type <span style={{ color: "#a5b4fc" }}>*</span>
+                  <label className="block text-sm font-semibold mb-1.5"
+                  style={{ color: "var(--lv-text-tile-secondary)" }}>
+                    Business Type <span style={{ color: "#64CEFB" }}>*</span>
                   </label>
                   <select
                     name="businessType"
                     required
                     defaultValue=""
                     className={`${inputClass} cursor-pointer`}
-                    style={{ background: "rgba(255,255,255,0.06)" }}
                   >
-                    <option value="" disabled style={{ background: "#0f0e1a" }}>
-                      Select your profession
-                    </option>
+                    <option value="" disabled>Select your profession</option>
                     {BUSINESS_TYPES.map((t) => (
-                      <option key={t} value={t} style={{ background: "#0f0e1a" }}>
-                        {t}
-                      </option>
+                      <option key={t} value={t}>{t}</option>
                     ))}
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-1.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  Message
-                </label>
+                <label className="block text-sm font-semibold mb-1.5"
+                  style={{ color: "var(--lv-text-tile-secondary)" }}>Message</label>
                 <textarea
                   name="message"
                   rows={4}
@@ -154,17 +157,15 @@ export default function ContactForm() {
                 />
               </div>
 
-              {error && (
-                <p className="text-red-400 text-sm font-medium">{error}</p>
-              )}
+              {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-4 rounded-xl font-semibold text-base text-white transition-all hover:opacity-90 disabled:opacity-50"
+                className="w-full py-4 rounded-xl font-semibold text-base transition-colors disabled:opacity-60 shadow-md"
                 style={{
-                  background: "linear-gradient(135deg, #6A91FF 0%, #7C3AED 100%)",
-                  boxShadow: "0 8px 28px rgba(106,145,255,0.25)",
+                  background: "var(--lv-cta-button-bg)",
+                  color: "var(--lv-cta-button-text)",
                 }}
               >
                 {submitting ? "Submitting..." : "Claim My 48-Hour Build Slot"}

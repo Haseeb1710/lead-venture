@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"E:/lead-venture\" 2>&1 | head -50)",
+      "Bash(curl -s \"https://registry.npmjs.org/lucide-react/1.14.0\")",
+      "Bash(curl -s \"https://registry.npmjs.org/lucide-react/latest\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('main:',d.get\\('main'\\)\\); print\\('module:',d.get\\('module'\\)\\); print\\('exports keys:',list\\(d.get\\('exports',{}\\).keys\\(\\)\\)[:10] if isinstance\\(d.get\\('exports'\\),dict\\) else d.get\\('exports'\\)\\); print\\('deps:',d.get\\('dependencies'\\)\\); print\\('peer:',d.get\\('peerDependencies'\\)\\)\")",
+      "Bash(node -e \"const d=require\\('/tmp/lr.json'\\); console.log\\('main:',d.main\\); console.log\\('module:',d.module\\); console.log\\('types:',d.types\\); console.log\\('exports:',JSON.stringify\\(d.exports\\).slice\\(0,400\\)\\); console.log\\('deps:',d.dependencies\\); console.log\\('peer:',d.peerDependencies\\)\")",
+      "Bash(mkdir -p /c/tmp/lr)",
+      "Read(//c/tmp/**)",
+      "Bash(curl -sL \"https://registry.npmjs.org/lucide-react/-/lucide-react-1.14.0.tgz\" -o p.tgz)",
+      "Bash(tar -tzf p.tgz)",
+      "Bash(tar -xzf p.tgz)",
+      "Bash(curl -s \"https://registry.npmjs.org/next/16.2.6\")",
+      "Bash(node -e \"const d=require\\('./next.json'\\); console.log\\('version:',d.version\\); console.log\\('deprecated:',d.deprecated\\); console.log\\('peer:',JSON.stringify\\(d.peerDependencies\\)\\)\")",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\('zod', require\\('zod/package.json'\\).version\\); console.log\\('resend', require\\('resend/package.json'\\).version\\)\")",
+      "Bash(npx jest *)",
+      "Bash(xargs grep -l \"serverActions\")",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); console.log\\(Object.keys\\(l\\).filter\\(k => /^\\(Scale|Shield|Bone|Smile|Tooth|Search|Lightbulb|Bot|Sparkles|Check|Gavel|Activity\\)/i.test\\(k\\)\\).sort\\(\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(npx tsc *)",
+      "Bash(npx eslint *)",
+      "Bash(npx next *)",
+      "Bash(npm run *)"
+    ]
+  }
+}

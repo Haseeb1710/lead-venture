@@ -1,0 +1,27 @@
+{
+  "name": "Lead Venture",
+  "short_name": "Lead Venture",
+  "description": "Conversion-optimized websites for lawyers, insurance agents, chiropractors, and dentists — launched in 48 hours.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "en-US",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/leadv-logo-dark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/leadv-logo-full.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "marketing", "productivity"]
+}

@@ -46,51 +46,135 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* Lead Venture — Traxy dark design tokens */
-  --color-lv-bg: #08070f;
-  --color-lv-surface: #0f0e1a;
-  --color-lv-primary: #7C3AED;
-  --color-lv-blue: #6A91FF;
-  --color-lv-pink: #FFA7B3;
-  --color-lv-lavender: #B59ADB;
-  --color-lv-text: #ffffff;
-  --color-lv-text-muted: rgba(255, 255, 255, 0.55);
-  --color-lv-footer: #05040a;
+  /* Lead Venture — Traxy light palette */
+  --color-lv-bg: #ffffff;
+  --color-lv-surface: #f7f7ff;
+  --color-lv-blue: #64CEFB;
+  --color-lv-lavender: #A78BFA;
+  --color-lv-pink: #7C3AED;
+  --color-lv-text: #0f0a1e;
+  --color-lv-muted: #6b7280;
+  --color-lv-footer: #0f0e1a;
 }
 
 :root {
-  --background: #08070f;
-  --foreground: #ffffff;
-  --card: #0f0e1a;
-  --card-foreground: #ffffff;
-  --popover: #0f0e1a;
-  --popover-foreground: #ffffff;
-  --primary: #7C3AED;
+  --background: #ffffff;
+  --foreground: #0f0a1e;
+  --card: #ffffff;
+  --card-foreground: #0f0a1e;
+  --popover: #ffffff;
+  --popover-foreground: #0f0a1e;
+  --primary: #0f0e1a;
   --primary-foreground: #ffffff;
-  --secondary: rgba(255, 255, 255, 0.06);
-  --secondary-foreground: #ffffff;
-  --muted: rgba(255, 255, 255, 0.06);
-  --muted-foreground: rgba(255, 255, 255, 0.5);
-  --accent: rgba(124, 58, 237, 0.15);
-  --accent-foreground: #ffffff;
+  --secondary: #f4f4f8;
+  --secondary-foreground: #0f0a1e;
+  --muted: #f4f4f8;
+  --muted-foreground: #6b7280;
+  --accent: rgba(100, 206, 251, 0.08);
+  --accent-foreground: #0f0a1e;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.08);
-  --ring: rgba(124, 58, 237, 0.4);
+  --border: #ebebef;
+  --input: #ebebef;
+  --ring: rgba(100, 206, 251, 0.35);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f0a1e;
+  --sidebar-primary: #0f0e1a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f4f4f8;
+  --sidebar-accent-foreground: #0f0a1e;
+  --sidebar-border: #ebebef;
+  --sidebar-ring: rgba(100, 206, 251, 0.35);
+
+  /* ─── Tile / surface tokens (light mode) ───────────────────────────── */
+  /* Pure glass — no colored tint. Backdrop-blur picks up whatever sits
+     behind the tile, white inset highlight gives the glass thickness. */
+  --lv-tile-from: rgba(255, 255, 255, 0.22);
+  --lv-tile-mid: rgba(255, 255, 255, 0.18);
+  --lv-tile-to: rgba(255, 255, 255, 0.22);
+  --lv-tile-border: rgba(255, 255, 255, 0.45);
+  --lv-tile-shadow: 0 14px 44px rgba(15, 10, 30, 0.06);
+  --lv-tile-inset: rgba(255, 255, 255, 0.55);
+  --lv-tile-top-glow: rgba(100, 206, 251, 0.55);
+  --lv-tile-scene-from: rgba(100, 206, 251, 0.10);
+  --lv-tile-scene-to: rgba(124, 58, 237, 0.06);
+  --lv-tile-scene-divider: rgba(100, 206, 251, 0.18);
+  --lv-tile-divider: rgba(100, 206, 251, 0.18);
+  --lv-tile-inner-bg: rgba(100, 206, 251, 0.08);
+  --lv-tile-inner-border: rgba(100, 206, 251, 0.22);
+  --lv-text-tile-primary: #0f0a1e;
+  --lv-text-tile-secondary: rgba(15, 10, 30, 0.75);
+  --lv-text-tile-muted: rgba(15, 10, 30, 0.55);
+  --lv-text-tile-faint: rgba(15, 10, 30, 0.42);
+  --lv-input-bg: rgba(255, 255, 255, 0.65);
+  --lv-input-border: rgba(15, 10, 30, 0.10);
+  --lv-input-placeholder: rgba(15, 10, 30, 0.40);
+  --lv-cta-button-bg: #0f0e1a;
+  --lv-cta-button-bg-hover: #1a1a2e;
+  --lv-cta-button-text: #ffffff;
+  --lv-ground-glow: rgba(100, 206, 251, 0.20);
+}
+
+/* Dark mode variable overrides — kicks in when html.dark.
+   Base color matches the footer (#0f0e1a) for a unified dark theme. */
+html.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #000000;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #0f0e1a;
+  --secondary: rgba(255, 255, 255, 0.06);
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.06);
+  --muted-foreground: rgba(255, 255, 255, 0.55);
+  --accent: rgba(100, 206, 251, 0.18);
+  --accent-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(100, 206, 251, 0.45);
   --sidebar: #0f0e1a;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #7C3AED;
-  --sidebar-primary-foreground: #ffffff;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #0f0e1a;
   --sidebar-accent: rgba(255, 255, 255, 0.06);
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.08);
-  --sidebar-ring: rgba(124, 58, 237, 0.4);
+  --sidebar-ring: rgba(100, 206, 251, 0.45);
+
+  /* ─── Tile / surface tokens (dark mode) ────────────────────────────── */
+  /* Pure glass on dark — neutral white tint, blur does the work. */
+  --lv-tile-from: rgba(255, 255, 255, 0.06);
+  --lv-tile-mid: rgba(255, 255, 255, 0.04);
+  --lv-tile-to: rgba(255, 255, 255, 0.06);
+  --lv-tile-border: rgba(255, 255, 255, 0.12);
+  --lv-tile-shadow: 0 18px 48px rgba(0, 0, 0, 0.40);
+  --lv-tile-inset: rgba(255, 255, 255, 0.10);
+  --lv-tile-top-glow: rgba(100, 206, 251, 0.45);
+  --lv-tile-scene-from: rgba(100, 206, 251, 0.04);
+  --lv-tile-scene-to: rgba(124, 58, 237, 0.02);
+  --lv-tile-scene-divider: rgba(255, 255, 255, 0.06);
+  --lv-tile-divider: rgba(255, 255, 255, 0.08);
+  --lv-tile-inner-bg: rgba(255, 255, 255, 0.05);
+  --lv-tile-inner-border: rgba(255, 255, 255, 0.10);
+  --lv-text-tile-primary: #ffffff;
+  --lv-text-tile-secondary: rgba(255, 255, 255, 0.80);
+  --lv-text-tile-muted: rgba(255, 255, 255, 0.60);
+  --lv-text-tile-faint: rgba(255, 255, 255, 0.40);
+  --lv-input-bg: rgba(255, 255, 255, 0.04);
+  --lv-input-border: rgba(255, 255, 255, 0.15);
+  --lv-input-placeholder: rgba(255, 255, 255, 0.35);
+  --lv-cta-button-bg: #ffffff;
+  --lv-cta-button-bg-hover: rgba(255, 255, 255, 0.92);
+  --lv-cta-button-text: #0f0a1e;
+  --lv-ground-glow: rgba(100, 206, 251, 0.20);
 }
 
 @layer base {
@@ -99,20 +183,126 @@
     box-sizing: border-box;
   }
   body {
-    background-color: #08070f;
-    color: #ffffff;
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   html {
     scroll-behavior: smooth;
   }
 }
 
+/* Dark-mode-friendly slider track */
+html.dark input[type="range"] {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Theme-aware input — reads from --lv-input-* tokens (light/dark adapt) */
+.lv-input {
+  background: var(--lv-input-bg);
+  border: 1px solid var(--lv-input-border);
+  color: var(--lv-text-tile-primary);
+  /* Hint to the browser to render native select dropdowns in dark UI. */
+  color-scheme: dark;
+}
+.lv-input::placeholder {
+  color: var(--lv-input-placeholder);
+}
+
+/* Native <option> elements are OS-rendered; the most we can portably set is
+   background + color. Keep the dropdown dark so it matches the surrounding form. */
+select.lv-input option {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+select.lv-input option:disabled {
+  color: rgba(255, 255, 255, 0.40);
+}
+
+/* Theme-aware gradient-border CTA pill (used in Navbar) */
+.cta-gradient-border {
+  border: 2.5px solid transparent;
+  background-image:
+    linear-gradient(white, white),
+    linear-gradient(135deg, #64CEFB 0%, #A78BFA 50%, #7C3AED 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+html.dark .cta-gradient-border {
+  background-image:
+    linear-gradient(#000000, #000000),
+    linear-gradient(135deg, #64CEFB 0%, #A78BFA 50%, #7C3AED 100%);
+}
+
+/* ─── Luminous Silica Stream (StockTicker) ─────────────────────────── */
+
+@keyframes tickerFlow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marketPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.ticker-wrap {
+  animation: tickerFlow 40s linear infinite;
+}
+
+.ticker-wrap:hover {
+  animation-play-state: paused;
+}
+
+.market-pulse-dot {
+  animation: marketPulse 2s infinite;
+}
+
+.stock-item {
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stock-item:hover {
+  transform: scale(1.06) translateY(-2px);
+  filter: drop-shadow(0 6px 18px rgba(100, 206, 251, 0.25));
+}
+
+/* Subtle vertical bob — each logo drifts on its own offset */
+@keyframes logoBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.logo-bob {
+  animation: logoBob 6s ease-in-out infinite;
+}
+.logo-bob:hover {
+  /* hover scale takes over via .stock-item:hover above */
+  animation-play-state: paused;
+}
+
+/* Sweeping highlight that drifts left-to-right across the lens */
+@keyframes lensSweep {
+  0%   { transform: translateX(-40%); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateX(340%); opacity: 0; }
+}
+.lens-sweep {
+  animation: lensSweep 7s ease-in-out infinite;
+}
+
+
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   height: 4px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.12);
+  background: #e8e8f0;
   outline: none;
 }
 
@@ -121,16 +311,16 @@ input[type="range"]::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6A91FF, #7C3AED);
+  background: linear-gradient(135deg, #64CEFB, #A78BFA);
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(106, 145, 255, 0.5);
+  box-shadow: 0 2px 10px rgba(100, 206, 251, 0.4);
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6A91FF, #7C3AED);
+  background: linear-gradient(135deg, #64CEFB, #A78BFA);
   cursor: pointer;
   border: none;
 }

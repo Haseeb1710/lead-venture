@@ -21,9 +21,10 @@ export function formatTime(ms: number): string {
 const STEPS = ["Payment", "Asset Upload", "AI Training", "Go-Live"]
 
 export default function LaunchTracker() {
-  const [timeLeft, setTimeLeft] = useState<number>(() => getNextSlot() - Date.now())
+  const [timeLeft, setTimeLeft] = useState<number | null>(null)
 
   useEffect(() => {
+    setTimeLeft(getNextSlot() - Date.now())
     const timer = setInterval(() => {
       setTimeLeft(getNextSlot() - Date.now())
     }, 1000)
@@ -31,20 +32,24 @@ export default function LaunchTracker() {
   }, [])
 
   return (
-    <section className="py-20 bg-[#0f0e1a]">
+    <section className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="rounded-2xl p-8 md:p-12"
+          className="relative rounded-2xl p-8 md:p-12"
           style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
+            background:
+              "linear-gradient(135deg, var(--lv-tile-from) 0%, var(--lv-tile-mid) 50%, var(--lv-tile-to) 100%)",
+            border: "1px solid var(--lv-tile-border)",
+            boxShadow:
+              "var(--lv-tile-shadow), inset 0 1px 0 var(--lv-tile-inset)",
+          backdropFilter: "blur(24px) saturate(100%)",
+          WebkitBackdropFilter: "blur(24px) saturate(100%)",
+                    }}>
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0f0a1e] dark:text-white mb-2">
               Your 48-Hour Launch Path
             </h2>
-            <p style={{ color: "rgba(255,255,255,0.45)" }}>
+            <p style={{ color: "var(--lv-text-tile-muted)" }}>
               From payment to published — here&apos;s exactly what happens
             </p>
           </div>
@@ -59,13 +64,14 @@ export default function LaunchTracker() {
                     style={
                       i < 2
                         ? {
-                            background: "linear-gradient(135deg, #6A91FF, #7C3AED)",
-                            color: "#ffffff",
-                            boxShadow: "0 4px 16px rgba(106,145,255,0.35)",
+                            background: "linear-gradient(135deg, #64CEFB, #A78BFA)",
+                            color: "#0a0a1a",
+                            boxShadow: "0 4px 14px rgba(100,206,251,0.4)",
                           }
                         : {
-                            background: "rgba(255,255,255,0.06)",
-                            color: "rgba(255,255,255,0.3)",
+                            background: "var(--lv-tile-inner-bg)",
+                            color: "var(--lv-text-tile-faint)",
+                            border: "1px solid var(--lv-tile-inner-border)",
                           }
                     }
                   >
@@ -73,7 +79,7 @@ export default function LaunchTracker() {
                   </div>
                   <span
                     className="text-xs text-center font-medium"
-                    style={{ color: i < 2 ? "#a5b4fc" : "rgba(255,255,255,0.3)" }}
+                    style={{ color: i < 2 ? "#64CEFB" : "var(--lv-text-tile-faint)" }}
                   >
                     {step}
                   </span>
@@ -83,8 +89,8 @@ export default function LaunchTracker() {
                     className="h-px flex-1 mx-2 -mt-5"
                     style={{
                       background: i < 1
-                        ? "linear-gradient(90deg, #6A91FF, #7C3AED)"
-                        : "rgba(255,255,255,0.08)",
+                        ? "linear-gradient(90deg, #64CEFB, #A78BFA)"
+                        : "var(--lv-tile-divider)",
                     }}
                   />
                 )}
@@ -96,29 +102,27 @@ export default function LaunchTracker() {
           <div
             className="text-center rounded-xl p-8"
             style={{
-              background: "rgba(106,145,255,0.06)",
-              border: "1px solid rgba(106,145,255,0.15)",
+              background:
+                "linear-gradient(135deg, rgba(100,206,251,0.10) 0%, rgba(167,139,250,0.10) 50%, rgba(124,58,237,0.08) 100%)",
+              border: "1px solid rgba(100,206,251,0.20)",
             }}
           >
-            <p
-              className="text-sm mb-3 font-medium uppercase tracking-widest"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-            >
+            <p className="text-sm mb-3 font-medium uppercase tracking-widest" style={{ color: "var(--lv-text-tile-muted)" }}>
               Next Available Slot
             </p>
             <div
               className="text-5xl md:text-6xl font-mono font-bold mb-4 tabular-nums"
               data-testid="countdown"
               style={{
-                background: "linear-gradient(135deg, #6A91FF 0%, #a78bfa 50%, #FFA7B3 100%)",
+                background: "linear-gradient(135deg, #64CEFB 0%, #A78BFA 50%, #7C3AED 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
             >
-              {formatTime(timeLeft)}
+              {timeLeft === null ? "--:--:--" : formatTime(timeLeft)}
             </div>
-            <p className="text-sm font-semibold text-amber-400">
+            <p className="text-sm font-semibold" style={{ color: "#FBBF24" }}>
               ⚡ Only 3 spots available this week
             </p>
           </div>

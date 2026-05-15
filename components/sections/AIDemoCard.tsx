@@ -9,38 +9,41 @@ export default function AIDemoCard() {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <section id="ai-demo" className="py-24 bg-[#0f0e1a]">
+    <section id="ai-demo" className="py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Card */}
           <div className="flex justify-center lg:order-2">
             <motion.div
-              className="rounded-2xl p-8 w-full max-w-sm"
+              className="relative rounded-2xl p-8 w-full max-w-sm"
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(106,145,255,0.2)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-              }}
+                background:
+                  "linear-gradient(135deg, var(--lv-tile-from) 0%, var(--lv-tile-mid) 50%, var(--lv-tile-to) 100%)",
+                border: "1px solid var(--lv-tile-border)",
+                boxShadow:
+                  "var(--lv-tile-shadow), inset 0 1px 0 var(--lv-tile-inset)",
+          backdropFilter: "blur(24px) saturate(100%)",
+          WebkitBackdropFilter: "blur(24px) saturate(100%)",
+                        }}
               onHoverStart={() => setHovered(true)}
               onHoverEnd={() => setHovered(false)}
-              whileHover={{ scale: 1.02, boxShadow: "0 30px 80px rgba(106,145,255,0.12)" }}
+              whileHover={{ scale: 1.02, boxShadow: "0 30px 70px rgba(100,206,251,0.20)" }}
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0"
                   style={{
-                    background: "linear-gradient(135deg, #6A91FF 0%, #7C3AED 100%)",
-                    boxShadow: "0 4px 20px rgba(106,145,255,0.4)",
+                    background: "linear-gradient(135deg, #64CEFB 0%, #A78BFA 100%)",
+                    boxShadow: "0 4px 16px rgba(100,206,251,0.35)",
                   }}
                 >
                   A
                 </div>
                 <div>
-                  <div className="font-semibold text-white">Aria — AI Receptionist</div>
-                  <div className="flex items-center gap-1.5 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
-                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <div className="font-semibold" style={{ color: "var(--lv-text-tile-primary)" }}>Aria — AI Receptionist</div>
+                  <div className="flex items-center gap-1.5 text-sm" style={{ color: "var(--lv-text-tile-muted)" }}>
+                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                     {'Live & Booking'}
                   </div>
                 </div>
@@ -57,7 +60,7 @@ export default function AIDemoCard() {
                     key={i}
                     className="w-2.5 rounded-full"
                     style={{
-                      background: "linear-gradient(to top, #6A91FF, #FFA7B3)",
+                      background: "linear-gradient(to top, #64CEFB, #7C3AED)",
                       height: 48,
                       originY: 0.5,
                     }}
@@ -78,11 +81,11 @@ export default function AIDemoCard() {
 
               {/* Dialogue */}
               <div
-                className="rounded-xl p-4 text-sm italic mb-6 leading-relaxed"
+                className="rounded-xl p-4 text-sm italic mb-6 leading-relaxed border"
                 style={{
-                  background: "rgba(106,145,255,0.08)",
-                  border: "1px solid rgba(106,145,255,0.15)",
-                  color: "rgba(255,255,255,0.65)",
+                  background: "rgba(100,206,251,0.08)",
+                  borderColor: "rgba(100,206,251,0.22)",
+                  color: "var(--lv-text-tile-secondary)",
                 }}
               >
                 "Hi, this is Aria from [Your Practice]. How can I help you today?"
@@ -93,11 +96,11 @@ export default function AIDemoCard() {
                 {["24/7 Available", "Instant Response", "Books Appointments"].map((pill) => (
                   <span
                     key={pill}
-                    className="text-xs px-3 py-1.5 rounded-full font-semibold"
+                    className="text-xs px-3 py-1.5 rounded-full font-semibold border"
                     style={{
-                      background: "rgba(106,145,255,0.12)",
-                      border: "1px solid rgba(106,145,255,0.2)",
-                      color: "#a5b4fc",
+                      background: "rgba(100,206,251,0.08)",
+                      borderColor: "rgba(100,206,251,0.22)",
+                      color: "#64CEFB",
                     }}
                   >
                     {pill}
@@ -109,20 +112,26 @@ export default function AIDemoCard() {
 
           {/* Copy */}
           <div className="lg:order-1">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2
+              className="text-4xl font-bold mb-6"
+              style={{ color: "var(--lv-text-tile-primary)" }}
+            >
               Meet Aria, Your AI Receptionist
             </h2>
-            <p className="text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.58)" }}>
+            <p
+              className="text-lg leading-relaxed mb-8"
+              style={{ color: "var(--lv-text-tile-secondary)" }}
+            >
               Stop losing calls after hours. Aria answers every call, qualifies the lead, and books
               appointments directly into your calendar — 24 hours a day, 7 days a week. No hold
               music. No missed revenue.
             </p>
             <a
-              href="#contact"
-              className="inline-block px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:opacity-90"
+              href="/contact"
+              className="inline-block px-8 py-3.5 rounded-xl font-semibold transition-colors shadow-md"
               style={{
-                background: "linear-gradient(135deg, #6A91FF 0%, #7C3AED 100%)",
-                boxShadow: "0 8px 28px rgba(106,145,255,0.25)",
+                background: "var(--lv-cta-button-bg)",
+                color: "var(--lv-cta-button-text)",
               }}
             >
               Add Aria to My Practice

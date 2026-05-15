@@ -48,7 +48,7 @@ const FAQ_SCHEMA = {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 bg-[#0f0e1a]">
+    <section id="faq" className="py-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
@@ -56,10 +56,8 @@ export default function FAQ() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Everything you need to know before you start
-          </p>
+          <h2 className="text-4xl font-bold text-[#0f0a1e] dark:text-white mb-4">Frequently Asked Questions</h2>
+          <p className="text-lg text-gray-600 dark:text-white/60">Everything you need to know before you start</p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-3">
@@ -67,18 +65,36 @@ export default function FAQ() {
             <AccordionItem
               key={i}
               value={`item-${i}`}
-              className="rounded-xl px-6 transition-colors"
+              className="relative rounded-2xl px-6 overflow-hidden data-[state=open]:border-[#64CEFB]/30 transition-colors"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
-              }}
+                background:
+                  "linear-gradient(135deg, var(--lv-tile-from) 0%, var(--lv-tile-mid) 50%, var(--lv-tile-to) 100%)",
+                border: "1px solid var(--lv-tile-border)",
+                boxShadow:
+                  "inset 0 1px 0 var(--lv-tile-inset), 0 12px 32px rgba(15,10,30,0.06)",
+          backdropFilter: "blur(24px) saturate(100%)",
+          WebkitBackdropFilter: "blur(24px) saturate(100%)",
+                        }}
             >
+              {/* Top-edge cyan highlight — matches other tiles */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-6 top-0 h-px"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent 0%, var(--lv-tile-top-glow) 50%, transparent 100%)",
+                }}
+              />
               <AccordionTrigger
-                className="text-left font-semibold text-white hover:no-underline py-5 hover:text-[#a5b4fc] transition-colors"
+                className="text-left font-semibold hover:no-underline py-5 hover:text-[#64CEFB] transition-colors"
+                style={{ color: "var(--lv-text-tile-primary)" }}
               >
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="leading-relaxed pb-5" style={{ color: "rgba(255,255,255,0.58)" }}>
+              <AccordionContent
+                className="leading-relaxed pb-5"
+                style={{ color: "var(--lv-text-tile-secondary)" }}
+              >
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
